@@ -10,9 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        maven { url = uri("https://jitpack.io") }
     }
 }
 rootProject.name = "SearchableExposedDropDownMenuJetpackCompose"
-include ':app'
-include ':searchable-dropdown'
+include(":app")
+include(":searchable-dropdown")
