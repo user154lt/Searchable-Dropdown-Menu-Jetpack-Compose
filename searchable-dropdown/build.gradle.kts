@@ -1,7 +1,40 @@
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.compose")
+    id("org.jetbrains.kotlin.plugin.compose")
+    kotlin("multiplatform")
     id("maven-publish")
+}
+
+kotlin{
+    androidTarget{
+        compilations.all{
+            kotlinOptions{
+                jvmTarget = "17"
+            }
+        }
+        publishLibraryVariants("release")
+    }
+    jvm("desktop")
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
+    applyDefaultHierarchyTemplate()
+
+    sourceSets{
+        val commonMain by getting {
+            dependencies {
+                implementation(compose.ui)
+                implementation(compose.material3)
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                implementation("androidx.core:core-ktx:1.15.0")
+            }
+        }
+    }
 }
 
 android {
@@ -30,15 +63,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -46,8 +70,8 @@ android {
     }
 }
 
-dependencies {
-    implementation("androidx.core:core-ktx:1.15.0")
-    implementation("androidx.compose.ui:ui:1.7.6")
-    implementation("androidx.compose.material3:material3:1.3.1")
+publishing {
+    repositories {
+        mavenLocal()
+    }
 }
