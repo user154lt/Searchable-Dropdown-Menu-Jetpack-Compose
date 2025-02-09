@@ -1,6 +1,5 @@
 package com.kanyidev.searchable_dropdown
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -45,9 +44,6 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.testTag
-import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -114,8 +110,8 @@ fun <T> LargeSearchableDropdownMenu(
             OutlinedTextField(
                 modifier = modifier
                     .fillMaxWidth()
-                    .height(56.dp)
-                    .semantics { testTag = title ?: "field"; testTagsAsResourceId = true },
+                    .height(56.dp),
+                    //.semantics { testTag = title ?: "field"; testTagsAsResourceId = true },
                 readOnly = true,
                 value = if (selectedOption != null) selectedItemToString(selectedOption) else "",
                 onValueChange = {},
@@ -168,8 +164,8 @@ fun <T> LargeSearchableDropdownMenu(
             filteredItems
         }
 
-        Log.e("items", "items: $items")
-        Log.e("filteredItems", "filtered: $filteredItems")
+        //Log.e("items", "items: $items")
+        //Log.e("filteredItems", "filtered: $filteredItems")
 
 
         PromptDialog(
