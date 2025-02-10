@@ -44,12 +44,14 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 @OptIn(
-    ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class
+    ExperimentalMaterial3Api::class
 )
 @Composable
 fun <T> LargeSearchableDropdownMenu(
@@ -110,8 +112,8 @@ fun <T> LargeSearchableDropdownMenu(
             OutlinedTextField(
                 modifier = modifier
                     .fillMaxWidth()
-                    .height(56.dp),
-                    //.semantics { testTag = title ?: "field"; testTagsAsResourceId = true },
+                    .height(56.dp)
+                    .semantics { testTag = title ?: "field" },
                 readOnly = true,
                 value = if (selectedOption != null) selectedItemToString(selectedOption) else "",
                 onValueChange = {},
@@ -163,10 +165,6 @@ fun <T> LargeSearchableDropdownMenu(
         } else {
             filteredItems
         }
-
-        //Log.e("items", "items: $items")
-        //Log.e("filteredItems", "filtered: $filteredItems")
-
 
         PromptDialog(
             modifier = Modifier

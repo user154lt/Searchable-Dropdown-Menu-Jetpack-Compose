@@ -48,12 +48,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
-import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -122,7 +120,7 @@ fun <T> SearchableExpandedDropDownMenuMaterial3(
     val itemHeights = remember { mutableStateMapOf<Int, Int>() }
     val baseHeight = 530.dp
     val density = LocalDensity.current
-    val configuration = LocalConfiguration.current
+    val screenSize = getScreenSize()
 
 
     if (showDefaultSelectedItem) {
@@ -141,7 +139,7 @@ fun <T> SearchableExpandedDropDownMenuMaterial3(
         if (itemHeights.keys.toSet() != listOfItems.indices.toSet()) {
             // if we don't have all heights calculated yet, return default value
 
-            val screenHeight = configuration.screenHeightDp.dp
+            val screenHeight = screenSize.height.dp
             return@remember if(screenHeight < baseHeight) {
                 screenHeight
             } else baseHeight
@@ -150,7 +148,7 @@ fun <T> SearchableExpandedDropDownMenuMaterial3(
 
         // top+bottom system padding
         var sum = with(density) { DropdownMenuVerticalPadding.toPx().toInt() } * 2
-        for ((_, itemSize) in itemHeights.toSortedMap()) {
+        for (itemSize in itemHeights.toMap().values.sorted()) {
             sum += itemSize
             if (sum >= baseHeightInt) {
                 return@remember with(density) { (sum - itemSize / 2).toDp() }
@@ -165,7 +163,7 @@ fun <T> SearchableExpandedDropDownMenuMaterial3(
     ) {
         OutlinedTextField(
             modifier = modifier
-                .semantics { testTag = fieldLabel; testTagsAsResourceId = true },
+                .semantics { testTag = fieldLabel },
             colors = colors,
             value = selectedOptionText,
             readOnly = readOnly,
@@ -176,9 +174,7 @@ fun <T> SearchableExpandedDropDownMenuMaterial3(
             trailingIcon = {
                 IconToggleButton(
                     modifier = Modifier
-                        .semantics {
-                            testTag = "dropDownIcon"; testTagsAsResourceId = true
-                        },
+                        .semantics { testTag = "dropDownIcon" },
                     checked = expanded,
                     onCheckedChange = {
                         expanded = it
