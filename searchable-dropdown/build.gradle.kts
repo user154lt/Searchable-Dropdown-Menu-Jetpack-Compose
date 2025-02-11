@@ -1,9 +1,9 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.compose")
-    id("org.jetbrains.kotlin.plugin.compose")
-    kotlin("multiplatform")
-    id("maven-publish")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.kotlin.plugin.compose)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.vanniktech.maven.publish)
 }
 
 kotlin{
