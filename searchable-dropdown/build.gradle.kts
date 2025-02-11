@@ -31,7 +31,17 @@ kotlin{
         }
         val androidMain by getting {
             dependencies {
-                implementation("androidx.core:core-ktx:1.15.0")
+                implementation("androidx.core:core-ktx:1.13.1")
+            }
+        }
+        val androidInstrumentedTest by getting {
+            dependencies {
+                implementation("androidx.test.ext:junit-ktx:1.2.1")
+            }
+        }
+        val androidUnitTest by getting {
+            dependencies {
+                implementation("junit:junit:4.13.2")
             }
         }
     }
@@ -69,6 +79,7 @@ android {
         }
     }
 }
+
 
 publishing {
     repositories {
