@@ -30,21 +30,21 @@ kotlin{
         }
         val androidMain by getting {
             dependencies{
-                implementation("androidx.core:core-ktx:1.15.0")
-                implementation("androidx.activity:activity-compose:1.9.3")
+                implementation(libs.androidx.core)
+                implementation(libs.androidx.activity)
             }
         }
         val androidInstrumentedTest by getting {
             dependencies {
-                implementation("androidx.test.ext:junit:1.2.1")
-                implementation("androidx.test.espresso:espresso-core:3.6.1")
-                implementation("androidx.compose.ui:ui-test-junit4:1.7.6")
+                implementation(libs.androidx.test.ext)
+                implementation(libs.androidx.test.espresso)
+                implementation(libs.compose.ui.junit)
             }
         }
 
         val androidUnitTest by getting {
             dependencies {
-                implementation("junit:junit:4.13.2")
+                implementation(libs.junit)
             }
         }
     }
@@ -94,6 +94,6 @@ android {
 }
 
 dependencies {
-    debugImplementation("androidx.compose.ui:ui-tooling:1.7.6")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.7.6")
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 }
