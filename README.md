@@ -1,14 +1,10 @@
 <h2 align="center">Searchable-Dropdown-Menu-Jetpack-Compose</h2> </br>
 
 <p align="center">
-:rocket: A Jetpack Compose Android Library to create a dropdown menu that is searchable.
+:rocket: A Jetpack Compose Multiplatform Library to create a dropdown menu that is searchable.
 </p> </br>
 <p align="center">
- <a href="https://devlibrary.withgoogle.com/products/android/repos/Breens-Mbaka-Searchable-Dropdown-Menu-Jetpack-Compose"><img alt="Google" src="https://img.shields.io/badge/google-devlib%20-blue.svg"/></a><br>
- <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
- <a href="https://android-arsenal.com/api?level=21+"><img alt="API" src="https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat"/></a>
- <a href="https://github.com/Breens-Mbaka/Searchable-Dropdown-Menu-Jetpack-Compose/actions"><img alt="Build Status" src="https://github.com/skydoves/Balloon/workflows/Android%20CI/badge.svg"/></a>
- <a href="https://jitpack.io/#Breens-Mbaka/Searchable-Dropdown-Menu-Jetpack-Compose"><img alt="Build Status" src="https://jitpack.io/v/Breens-Mbaka/Searchable-Dropdown-Menu-Jetpack-Compose.svg"/></a> 
+    Forked from <a href="https://github.com/Breens-Mbaka/Searchable-Dropdown-Menu-Jetpack-Compose/">Searchable Dropdown Compose</a>
 </p> <br>
 
 https://github.com/user-attachments/assets/9ecde338-5b81-401d-a415-86bdfff080b3
