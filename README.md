@@ -7,28 +7,44 @@
     Forked from <a href="https://github.com/Breens-Mbaka/Searchable-Dropdown-Menu-Jetpack-Compose/">Searchable Dropdown Compose</a>
 </p> <br>
 
-https://github.com/user-attachments/assets/9ecde338-5b81-401d-a415-86bdfff080b3
+I found the original library and thought it was pretty cool, I wanted to use it on iOS so decided to migrate it to Compose Multiplatform.
 
-## How to include it into your project
+## Implementation
 
-### Step 1. Add it in your root `build.gradle` at the end of repositories:
+### Version catalog
 
-```gradle
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
+If you're using a version catalog then add the following to your `libs.versions.toml` file:
+
+```toml
+[versions]
+#...
+dropdown = "1.0.0"
+
+[libraries]
+#...
+searchable-dropdown = { module = "io.github.user154lt:searchable-dropdown", version.ref = "dropdown" }
 ```
 
-### Step 2. Add the dependency
+Then add the following to your module level `build.gradle.kts` dependencies block
 
 ```gradle
 dependencies {
-    implementation 'com.github.Breens-Mbaka:Searchable-Dropdown-Menu-Jetpack-Compose:<latest-version>'
+    implementation(libs.searchable.dropdown)
+}  
+```
+
+### Gradle
+
+Alternatively you can add the following to your module level `build.gradle.kts` dependencies block 
+
+```gradle
+dependencies {
+    implementation("io.github.user154lt:searchable-dropdown:1.1.0")
 }
 ```
+---
+*Original readme follows:*
+---
 
 ### Usage
 
