@@ -1,3 +1,6 @@
+import com.android.utils.TraceUtils.simpleId
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.compose)
@@ -6,10 +9,10 @@ plugins {
     alias(libs.plugins.vanniktech.maven.publish)
 }
 
-kotlin{
-    androidTarget{
-        compilations.all{
-            kotlinOptions{
+kotlin {
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
                 jvmTarget = "17"
             }
         }
@@ -22,7 +25,7 @@ kotlin{
 
     applyDefaultHierarchyTemplate()
 
-    sourceSets{
+    sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(compose.ui)
@@ -64,8 +67,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -80,9 +83,43 @@ android {
     }
 }
 
+mavenPublishing {
+    coordinates(
+        groupId = "io.github.user154lt",
+        artifactId = "searchable-dropdown",
+        version = "1.0.0"
+    )
 
-publishing {
-    repositories {
-        mavenLocal()
+    pom {
+        name.set("Compose multiplatform searchable dropdown library")
+        description.set(
+            "A Jetpack Compose Multiplatform Library to create a dropdown menu that is " +
+                    "searchable, can be used for Android, desktop and iOS targets"
+        )
+        inceptionYear.set("2025")
+        url.set("https://github.com/user154lt/Searchable-Dropdown-Menu-Jetpack-Compose")
+        licenses {
+            license {
+                name.set("Apache")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0")
+            }
+        }
+        developers {
+            developer {
+                id.set("User154lt")
+                name.set("User154")
+                url = "https://github.com/user154lt/"
+            }
+            developer {
+                id.set("Breens-Mbaka")
+                name.set("Breens Robert")
+                url = "https://github.com/Breens-Mbaka"
+            }
+        }
+        scm{
+            url.set("https://github.com/user154lt/Searchable-Dropdown-Menu-Jetpack-Compose")
+        }
     }
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
 }
