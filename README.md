@@ -18,7 +18,7 @@ If you're using a version catalog then add the following to your `libs.versions.
 ```toml
 [versions]
 #...
-dropdown = "1.0.0"
+dropdown = "1.1.0"
 
 [libraries]
 #...
