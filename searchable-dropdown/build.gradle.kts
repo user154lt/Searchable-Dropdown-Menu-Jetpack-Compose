@@ -1,5 +1,6 @@
-import com.android.utils.TraceUtils.simpleId
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
@@ -11,10 +12,9 @@ plugins {
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
         }
         publishLibraryVariants("release")
     }
@@ -56,8 +56,6 @@ android {
 
     defaultConfig {
         minSdk = 21
-        //noinspection OldTargetApi
-        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -116,7 +114,7 @@ mavenPublishing {
                 url = "https://github.com/Breens-Mbaka"
             }
         }
-        scm{
+        scm {
             url.set("https://github.com/user154lt/Searchable-Dropdown-Menu-Jetpack-Compose")
         }
     }
