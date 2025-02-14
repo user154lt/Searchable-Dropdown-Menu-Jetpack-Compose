@@ -1,4 +1,4 @@
-package searchableexposeddropdownmenujetpackcompose
+package com.breens.searchableexposeddropdownmenujetpackcompose
 
 import MainScreen
 import android.os.Bundle

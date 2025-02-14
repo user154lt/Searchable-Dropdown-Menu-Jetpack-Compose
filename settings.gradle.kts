@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "SearchableExposedDropDownMenuJetpackCompose"
-include(":app")
+include(":composeApp")
 include(":searchable-dropdown")
